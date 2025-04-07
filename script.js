@@ -68,40 +68,65 @@ btn.addEventListener('click',()=>{
 })
 })
 
-const arrowRight=document.querySelector(".portfolio-box .navigation .arrow-right")
-const arrowLeft=document.querySelector(".portfolio-box .navigation .arrow-left")
+const arrowRight = document.querySelector(".portfolio-box .navigation .arrow-right");
+const arrowLeft = document.querySelector(".portfolio-box .navigation .arrow-left");
 
-let index=0;
-const activePortfolio=()=>{
-    const imgSlide=document.querySelector(".portfolio-crausal .img-slide")
-    const portfolioDetail=document.querySelectorAll(".portfolio-detail")
-    imgSlide.style.tranform=`translateX(calc(${index*100}%-${index-2}rem)`
-    portfolioDetail.forEach(detail =>{
-        detail.classList.remove("active")
+let index = 0;
 
-    })
-    portfolioDetail[index].classList.add("active")
-}
-arrowRight.addEventListener('click',()=>{
-    if(index < 2){
-        index++
-        arrowLeft.classList.remove("disabled")
-      
+const activePortfolio = () => {
+    const imgSlide = document.querySelector(".portfolio-crausal .img-slide");
+    const portfolioDetail = document.querySelectorAll(".portfolio-detail");
+
+    const maxIndex = portfolioDetail.length - 1; 
+   
+    imgSlide.style.transform = `translateX(calc(${index * -100}% - ${index * 2}rem))`;
+
+    
+    portfolioDetail.forEach(detail => {
+        detail.classList.remove("active");
+    });
+
+    
+    if (portfolioDetail[index]) {
+        portfolioDetail[index].classList.add("active");
     }
-    else{
-        index=2
-        arrowRight.classList.add("disabled")
+
+    
+    if (index === 0) {
+        arrowLeft.classList.add("disabled");
+    } else {
+        arrowLeft.classList.remove("disabled");
     }
-    activePortfolio()
-})
-arrowLeft.addEventListener('click',()=>{
-    if(index > 1){
-        index--
-        arrowRight.classList.remove("disabled")
+
+    
+    if (index === maxIndex) {
+        arrowRight.classList.add("disabled");
+    } else {
+        arrowRight.classList.remove("disabled");
     }
-    else{
-        index=0
-        arrowLeft.classList.add("disabled")
+};
+
+arrowRight.addEventListener('click', () => {
+    const portfolioDetail = document.querySelectorAll(".portfolio-detail");
+    const maxIndex = portfolioDetail.length - 1;
+
+    if (index < maxIndex) {
+        index++;
+    } else {
+        index = maxIndex;  
     }
-    activePortfolio()
-})
+    activePortfolio();
+});
+
+arrowLeft.addEventListener('click', () => {
+    if (index > 0) {
+        index--;
+    } else {
+        index = 0;  
+    }
+    activePortfolio();
+});
+
+
+activePortfolio();
+

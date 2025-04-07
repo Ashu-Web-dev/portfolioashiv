@@ -262,6 +262,7 @@ animation: rotate-border 10s linear infinite;
     width: 85%;
     object-fit: cover;
     mix-blend-mode: lighten;
+   
 }
 .heading{
     font-size: 4rem;
@@ -537,7 +538,6 @@ color: var(--main-color);
     background: var(--white-color);
     color: var(--bg-color);
     opacity: 0;
-    
     transition: 0.2s;
 
 }
@@ -551,7 +551,7 @@ color: var(--main-color);
     height: 45rem;
     border-radius: 1rem;
     overflow: hidden;
-
+   
 }
 .portfolio-crausal .img-slide{
     display: grid;
@@ -560,16 +560,21 @@ color: var(--main-color);
     gap:2rem;
     height: inherit;
     transition: 0.5s;
+   
+
 }
 .portfolio-crausal .img-item{
     height: inherit;
+   
 }
- .crausal .img-item img{
+.portfolio-crausal .img-item img{
     display: block;
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 1rem;
+   
+   
 }
 .portfolio-box .navigation{
 text-align: right;
